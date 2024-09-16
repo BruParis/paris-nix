@@ -28,6 +28,8 @@
     dconf # needed by gtk
     networkmanagerapplet
 
+    wev # for key bindings
+
     wl-clipboard
     cliphist
 
@@ -95,6 +97,8 @@
     # Allows home-manager to link files from the nix store right into home directory
     ".icons/bibata".source = "${pkgs.bibata-cursors}/share/icaons/Bibata-Modern-Classic";
   };
+
+  services.ssh-agent.enable = true;
 
   programs.bash = {
     enable = true;
