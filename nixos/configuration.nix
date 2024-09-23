@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -90,12 +90,6 @@
     wget
     git
 
-    # bar for hyprland
-    (waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      })
-    )
-
     # wayland notification daemon
     mako
     # ... which depends on:
@@ -116,6 +110,7 @@
   ];
 
   programs.hyprland.enable = true; 
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # Desktop portals: handles desktop programs interactions, screen-sharing, file opening
   xdg.portal.enable = true;

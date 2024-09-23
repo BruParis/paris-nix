@@ -30,8 +30,23 @@
 
     wev # for key bindings
 
+    # wayland notification daemon
+    mako
+    # ... which depends on
+    libnotify
+
     wl-clipboard
     cliphist
+
+    # wall paper daemon
+    # hyprpaper
+    swww
+
+    kitty # hyprland default
+    alacritty
+
+    # app launcher
+    rofi-wayland
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -58,6 +73,11 @@
     userName = "BrnPrs";
     userEmail = "parisbruno85@gmail.com";
   };
+
+  # Hyprland
+  # imports = [
+  #   ./hyprland.nix
+  # ];
 
   # let
   #   gruvboxplus = import ./gruvbox-plus.nix { inherit pkgs; };
