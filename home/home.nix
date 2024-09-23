@@ -3,6 +3,11 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  imports = [
+    # hyprland.homeManagerModules.default
+    ./programs
+  ];
+
   home.username = "bruno";
   home.homeDirectory = "/home/bruno";
 
@@ -73,11 +78,6 @@
     userName = "BrnPrs";
     userEmail = "parisbruno85@gmail.com";
   };
-
-  # Hyprland
-  # imports = [
-  #   ./hyprland.nix
-  # ];
 
   # let
   #   gruvboxplus = import ./gruvbox-plus.nix { inherit pkgs; };
