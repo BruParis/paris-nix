@@ -89,6 +89,7 @@
     vim
     wget
     git
+    tmux
 
     # wayland notification daemon
     mako
