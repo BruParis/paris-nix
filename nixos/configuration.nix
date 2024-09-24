@@ -92,21 +92,6 @@
     git
     tmux
 
-    # wayland notification daemon
-    mako
-    # ... which depends on:
-    libnotify
-
-    # wall paper daemon
-    # hyprpaper
-    swww
-
-    kitty # hyprland default
-    alacritty
-
-    # app launcher
-    rofi-wayland
-
     # exa
     eza
 

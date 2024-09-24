@@ -10,10 +10,10 @@
       style = ''
                * {
                  font-family: "JetBrainsMono Nerd Font";
-                 font-size: 12pt;
+                 font-size: 10pt;
                  font-weight: bold;
                  transition-property: background-color;
-                 transition-duration: 0.5s;
+                 transition-duration: 0.2s;
                }
                @keyframes blink_red {
                  to {
@@ -33,7 +33,6 @@
                }
                window > box {
                  background-color: #1e1e2a;
-                 padding: 3px;
                  padding-left:8px;
                  border: 2px none #33ccff;
                }
@@ -70,20 +69,18 @@
                  padding-right: 6px;
                  color: #7ebae4;
                }
-         #mode, #clock, #memory, #cpu,#mpd, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-cava-internal {
+         #mode, #clock, #memory, #cpu, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu  {
                  padding-left: 10px;
                  padding-right: 10px;
                }
-               /* #mode { */
-               /* 	margin-left: 10px; */
-               /* 	background-color: rgb(248, 189, 150); */
-               /*     color: rgb(26, 24, 38); */
-               /* } */
          #memory {
                  color: rgb(181, 232, 224);
                }
          #cpu {
                  color: rgb(245, 194, 231);
+               }
+         #battery {
+                 color: rgb(255, 187, 15);
                }
          #clock {
                  color: rgb(217, 224, 238);
@@ -114,35 +111,19 @@
                  padding-right: 8px;
                  padding-left: 10px;
                }
-         #mpd.paused {
-                 color: #414868;
-                 font-style: italic;
-               }
-         #mpd.stopped {
-                 background: transparent;
-               }
-         #mpd {
-                 color: #c0caf5;
-               }
-         #custom-cava-internal{
-                 font-family: "Hack Nerd Font" ;
-                 color: #33ccff;
-               }
       '';
       settings = [{
         "layer" = "top";
         "position" = "top";
         modules-left = [
           "custom/launcher"
-          "mpd"
-          "custom/cava-internal"
         ];
         modules-center = [
           "clock"
         ];
         modules-right = [
           "pulseaudio"
-          "backlight"
+          "battery"
           "memory"
           "cpu"
           "network"
@@ -151,13 +132,9 @@
         ];
         "custom/launcher" = {
           "format" = " ";
-          "on-click" = "pkill rofi || rofi2";
+          "on-click" = "rofi -show drun";
           "on-click-middle" = "exec default_wall";
           "on-click-right" = "exec wallpaper_random";
-          "tooltip" = false;
-        };
-        "custom/cava-internal" = {
-          "exec" = "sleep 1s && cava-internal";
           "tooltip" = false;
         };
         "pulseaudio" = {
@@ -172,9 +149,7 @@
         };
         "clock" = {
           "interval" = 1;
-          "format" = "{:%I:%M %p  %A %b %d}";
-          "tooltip" = true;
-          "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>";
+          "format" = "{:%H:%M %A %b %d}";
         };
         "memory" = {
           "interval" = 1;
@@ -183,23 +158,21 @@
             "warning" = 85;
           };
         };
+        "battery" = {
+          "interval" = 1;
+          "states" = {
+            "good" = 60;
+            "warning" = 20;
+            "critical" = 10;
+            "urgent" = 5; 
+          };
+          "format" = "{icon} {capacity}%";
+          "format-plugged" = "{capacity}% ";
+          "format-icons" = ["" "" "" "" ""];
+        };
         "cpu" = {
           "interval" = 1;
           "format" = "󰍛 {usage}%";
-        };
-        "mpd" = {
-          "max-length" = 25;
-          "format" = "<span foreground='#bb9af7'></span> {title}";
-          "format-paused" = " {title}";
-          "format-stopped" = "<span foreground='#bb9af7'></span>";
-          "format-disconnected" = "";
-          "on-click" = "mpc --quiet toggle";
-          "on-click-right" = "mpc update; mpc ls | mpc add";
-          "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
-          "on-scroll-up" = "mpc --quiet prev";
-          "on-scroll-down" = "mpc --quiet next";
-          "smooth-scrolling-threshold" = 5;
-          "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
         };
         "network" = {
           "format-disconnected" = "󰯡 Disconnected";

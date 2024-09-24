@@ -62,6 +62,9 @@
     # Browsers
     firefox
     google-chrome
+
+    # misc
+    pamixer    
   ];
 
   #  Manage environment variables manually by sourcing 'hm-session-vars.sh' at:

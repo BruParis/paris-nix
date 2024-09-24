@@ -40,6 +40,7 @@ $menu = wofi --show drun
 # Autostart necessary processes (like notifications daemons, status bars, etc.)
 # Or execute your favorite apps at launch like this:
 
+exec-once = swww-daemon 
 # exec-once = $terminal
 # exec-once = nm-applet &
 # exec-once = waybar & hyprpaper & firefox
@@ -55,7 +56,6 @@ exec = pkill waybar & sleep 0.2 && waybar
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
 
-
 #####################
 ### LOOK AND FEEL ###
 #####################
@@ -64,10 +64,10 @@ env = HYPRCURSOR_SIZE,24
 
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {
-    gaps_in = 5
-    gaps_out = 20
+    gaps_in = 3
+    gaps_out = 7
 
-    border_size = 2
+    border_size = 1
 
     # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
     col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
@@ -84,11 +84,11 @@ general {
 
 # https://wiki.hyprland.org/Configuring/Variables/#decoration
 decoration {
-    rounding = 10
+    rounding = 1
 
     # Change transparency of focused and unfocused windows
-    active_opacity = 1.0
-    inactive_opacity = 1.0
+    active_opacity = 0.95
+    inactive_opacity = 0.92
 
     drop_shadow = true
     shadow_range = 4
