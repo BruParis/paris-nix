@@ -8,6 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../hosts/desktop
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -30,7 +31,7 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "fr_FR.UTF-8";
-  i18n.consoleKeyMap = "fr-latin1";
+  console.keyMap = "fr-latin1";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "fr-latin1";
@@ -108,6 +109,8 @@
 
     # exa
     eza
+
+    htop
   ];
 
   programs.hyprland.enable = true; 

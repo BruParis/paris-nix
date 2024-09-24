@@ -13,7 +13,7 @@
   #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
+    systemd.enable = true;
     extraConfig = ''
 ################
 ### MONITORS ###
@@ -44,6 +44,7 @@ $menu = wofi --show drun
 # exec-once = nm-applet &
 # exec-once = waybar & hyprpaper & firefox
 
+exec = pkill waybar & sleep 0.2 && waybar
 
 #############################
 ### ENVIRONMENT VARIABLES ###

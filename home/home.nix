@@ -97,7 +97,7 @@
 
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme.name = "gtk";
     style.name = "adwaita-theme";
     style.package = pkgs.adwaita-qt;
   };
