@@ -117,6 +117,7 @@
         "position" = "top";
         modules-left = [
           "custom/launcher"
+          "hyprland/workspaces"
         ];
         modules-center = [
           "clock"

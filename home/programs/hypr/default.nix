@@ -229,7 +229,7 @@ bind = $mainMod, mouse_down, workspace, e+1
 bind = $mainMod, mouse_up, workspace, e-1
 
 # rofi
-bind = $mainMod, twosuperior, exec, rofi -show window
+bind = $mainMod, twosuperior, exec, rofi -show drun
 
 # Move/resize windows with mainMod + LMB/RMB and dragging
 bindm = $mainMod, mouse:272, movewindow

@@ -3,5 +3,6 @@
     ./hypr
     ./waybar
     ./alacritty
+    ./bash
   ];
 }
