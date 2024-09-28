@@ -115,6 +115,8 @@
     git
     tmux
 
+    inputs.paris-nixvim.defaultPackage."x86_64-linux"
+
     # needed by qt
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects

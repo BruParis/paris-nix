@@ -8,9 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    paris-nixvim.url = "github:BruParis/paris-nixvim";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, paris-nixvim, ... } @ inputs:
     let
       system = "x86_64-linux";
 
@@ -29,7 +30,6 @@
 
           modules = [
             ./nixos/configuration.nix
-            # hyprland.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
