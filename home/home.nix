@@ -65,6 +65,7 @@
 
     # misc
     pamixer    
+    trash-cli
   ];
 
   #  Manage environment variables manually by sourcing 'hm-session-vars.sh' at:
