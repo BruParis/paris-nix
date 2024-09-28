@@ -52,7 +52,22 @@
   services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [
+        pkgs.gutenprint # — Drivers for many different printers from many different vendors.
+	pkgs.gutenprintBin # — Additional, binary-only drivers for some printers.
+	pkgs.hplip # — Drivers for HP printers.
+	pkgs.hplipWithPlugin # — Drivers for HP printers, with the proprietary plugin. Use NIXPKGS_ALLOW_UNFREE=1 nix-shell -p hplipWithPlugin --run 'sudo -E hp-setup' to add the printer, regular CUPS UI doesn't seem to work.
+	pkgs.postscript-lexmark # — Postscript drivers for Lexmark
+	pkgs.samsung-unified-linux-driver # — Proprietary Samsung Drivers
+	pkgs.splix # — Drivers for printers supporting SPL (Samsung Printer Language).
+	pkgs.brlaser # — Drivers for some Brother printers
+	pkgs.brgenml1lpr #  — Generic drivers for more Brother printers [1]
+	pkgs.brgenml1cupswrapper  # — Generic drivers for more Brother printers [1]
+	pkgs.cnijfilter2 # — Drivers for some Canon Pixma devices (Proprietary driver)
+    ];
+  };
 
   # Enable sound.
   # sound.enable = true;
@@ -65,8 +80,16 @@
     pulse.enable = true;
     jack.enable = true;
   };
+
   # Not needed if pipewire
   # hardware.pulseaudio.enable = true;
+
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.hplip pkgs.hplipWithPlugin ];
+  };
+
+  # Open ports in the firewall.
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -77,7 +100,7 @@
   };
   users.users.bruno = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "scanner" "lp" ];
     hashedPassword = "$6$ZBXl1qCQMq7iYa5h$6np0VTJpl8vpop2kHVptX8wBILURSFwuZPfY3BGzY0Q7y0CzbciVYj7idmeT3ste.c72LtA/5F4c545dP1CfE1";
     packages = with pkgs; [
       tree
