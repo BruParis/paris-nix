@@ -9,7 +9,7 @@
       };
       style = ''
                * {
-                 font-family: "JetBrainsMono Nerd Font";
+                 font-family: "LiterationMono Nerd Font";
                  font-size: 10pt;
                  font-weight: bold;
                  transition-property: background-color;
@@ -123,13 +123,13 @@
           "clock"
         ];
         modules-right = [
+          "tray"
           "pulseaudio"
           "battery"
           "memory"
           "cpu"
           "network"
           "custom/powermenu"
-          "tray"
         ];
         "custom/launcher" = {
           "format" = " ";

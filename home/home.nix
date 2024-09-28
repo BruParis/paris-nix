@@ -72,7 +72,7 @@
   #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
   #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
   #  /etc/profiles/per-user/bruno/etc/profile.d/hm-session-vars.sh
-  #
+
   home.sessionVariables = {
     EDITOR = "vim";
   };
@@ -83,26 +83,10 @@
     userEmail = "parisbruno85@gmail.com";
   };
 
-  # let
-  #   gruvboxplus = import ./gruvbox-plus.nix { inherit pkgs; };
-  # in
-  # {
-  #   gtk.enable = true;
-
-  #   gtk.theme.package = pkgs.adw-gtk3;
-  #   gtk.theme.name = "adw-gtk3";
-
-  #   gtk.cursorTheme.package = pkgs.bibata-cursors;
-  #   gtk.cursorTheme.name = "Bibata-Modern-Ice";
-
-  #   gtk.iconTheme.package = import ./gruvbox-plus.nix { inherit pkgs; };
-  #   gtk.iconTheme.name = "GruvboxPlus";
-  # };
-
   qt = {
     enable = true;
     platformTheme.name = "gtk";
-    style.name = "adwaita-theme";
+    style.name = "adwaita-dark";
     style.package = pkgs.adwaita-qt;
   };
 

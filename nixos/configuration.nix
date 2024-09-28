@@ -115,6 +115,10 @@
     git
     tmux
 
+    # needed by qt
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+
     # exa
     eza
 
