@@ -115,7 +115,7 @@
     git
     tmux
 
-    inputs.paris-nixvim.defaultPackage."x86_64-linux"
+    inputs.paris-nixvim.packages."x86_64-linux".default
 
     # needed by qt
     libsForQt5.qt5.qtquickcontrols2
