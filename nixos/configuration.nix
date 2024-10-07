@@ -125,6 +125,8 @@
     eza
 
     htop
+
+    python310
   ];
 
   programs.hyprland.enable = true; 
