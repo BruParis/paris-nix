@@ -127,6 +127,7 @@
     htop
 
     python310
+    virtualenv
   ];
 
   programs.hyprland.enable = true; 
