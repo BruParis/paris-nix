@@ -126,6 +126,7 @@
 
     htop
 
+    gcc
     python310
     virtualenv
   ];
