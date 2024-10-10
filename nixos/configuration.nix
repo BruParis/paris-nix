@@ -128,6 +128,7 @@
 
     gcc
     python310
+    python312
     virtualenv
   ];
 
