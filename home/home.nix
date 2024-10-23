@@ -66,6 +66,11 @@
     # misc
     pamixer    
     trash-cli
+    zip
+    unzip
+
+    texlive.combined.scheme-full
+    zathura
   ];
 
   #  Manage environment variables manually by sourcing 'hm-session-vars.sh' at:
