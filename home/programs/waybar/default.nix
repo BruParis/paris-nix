@@ -10,10 +10,11 @@
       style = ''
                * {
                  font-family: "LiterationMono Nerd Font";
-                 font-size: 10pt;
+                 font-size: 9pt;
                  font-weight: bold;
                  transition-property: background-color;
                  transition-duration: 0.2s;
+                 min-height: 0px;
                }
                @keyframes blink_red {
                  to {
