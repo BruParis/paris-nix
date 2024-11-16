@@ -130,6 +130,7 @@
     python310
     python312
     virtualenv
+    nixfmt
   ];
 
   programs.hyprland.enable = true; 
