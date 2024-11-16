@@ -5,11 +5,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../hosts/desktop
-    ];
+  imports = [ ./hardware-configuration.nix ../hosts/desktop ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -20,7 +16,8 @@
   networking.hostName = "paris-nix"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -45,7 +42,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-  };  
+  };
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "fr";
@@ -55,17 +52,17 @@
   services.printing = {
     enable = true;
     drivers = [
-        pkgs.gutenprint # — Drivers for many different printers from many different vendors.
-	pkgs.gutenprintBin # — Additional, binary-only drivers for some printers.
-	pkgs.hplip # — Drivers for HP printers.
-	pkgs.hplipWithPlugin # — Drivers for HP printers, with the proprietary plugin. Use NIXPKGS_ALLOW_UNFREE=1 nix-shell -p hplipWithPlugin --run 'sudo -E hp-setup' to add the printer, regular CUPS UI doesn't seem to work.
-	pkgs.postscript-lexmark # — Postscript drivers for Lexmark
-	pkgs.samsung-unified-linux-driver # — Proprietary Samsung Drivers
-	pkgs.splix # — Drivers for printers supporting SPL (Samsung Printer Language).
-	pkgs.brlaser # — Drivers for some Brother printers
-	pkgs.brgenml1lpr #  — Generic drivers for more Brother printers [1]
-	pkgs.brgenml1cupswrapper  # — Generic drivers for more Brother printers [1]
-	pkgs.cnijfilter2 # — Drivers for some Canon Pixma devices (Proprietary driver)
+      pkgs.gutenprint # — Drivers for many different printers from many different vendors.
+      pkgs.gutenprintBin # — Additional, binary-only drivers for some printers.
+      pkgs.hplip # — Drivers for HP printers.
+      pkgs.hplipWithPlugin # — Drivers for HP printers, with the proprietary plugin. Use NIXPKGS_ALLOW_UNFREE=1 nix-shell -p hplipWithPlugin --run 'sudo -E hp-setup' to add the printer, regular CUPS UI doesn't seem to work.
+      pkgs.postscript-lexmark # — Postscript drivers for Lexmark
+      pkgs.samsung-unified-linux-driver # — Proprietary Samsung Drivers
+      pkgs.splix # — Drivers for printers supporting SPL (Samsung Printer Language).
+      pkgs.brlaser # — Drivers for some Brother printers
+      pkgs.brgenml1lpr # — Generic drivers for more Brother printers [1]
+      pkgs.brgenml1cupswrapper # — Generic drivers for more Brother printers [1]
+      pkgs.cnijfilter2 # — Drivers for some Canon Pixma devices (Proprietary driver)
     ];
   };
 
@@ -75,7 +72,7 @@
   # with pipewire
   services.pipewire = {
     enable = true;
-    alsa.enable =true;
+    alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
@@ -96,15 +93,15 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.root = {
-    hashedPassword = "$6$f7/tk7gvCV.7j7P9$NclQwH5VffccfUbJq/Vouo1AdO1GroozzwK5rhAzgG6fP61t8EY.SWqq6xVT/dF7zLKzPP.3CK7Lftq8snar7/";
+    hashedPassword =
+      "$6$f7/tk7gvCV.7j7P9$NclQwH5VffccfUbJq/Vouo1AdO1GroozzwK5rhAzgG6fP61t8EY.SWqq6xVT/dF7zLKzPP.3CK7Lftq8snar7/";
   };
   users.users.bruno = {
     isNormalUser = true;
     extraGroups = [ "wheel" "scanner" "lp" ];
-    hashedPassword = "$6$ZBXl1qCQMq7iYa5h$6np0VTJpl8vpop2kHVptX8wBILURSFwuZPfY3BGzY0Q7y0CzbciVYj7idmeT3ste.c72LtA/5F4c545dP1CfE1";
-    packages = with pkgs; [
-      tree
-    ];
+    hashedPassword =
+      "$6$ZBXl1qCQMq7iYa5h$6np0VTJpl8vpop2kHVptX8wBILURSFwuZPfY3BGzY0Q7y0CzbciVYj7idmeT3ste.c72LtA/5F4c545dP1CfE1";
+    packages = with pkgs; [ tree ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -133,13 +130,14 @@
     nixfmt
   ];
 
-  programs.hyprland.enable = true; 
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  programs.hyprland.enable = true;
+  programs.hyprland.package =
+    inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # Desktop portals: handles desktop programs interactions, screen-sharing, file opening
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

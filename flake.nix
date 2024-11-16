@@ -11,22 +11,19 @@
     paris-nixvim.url = "github:BruParis/paris-nixvim";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, paris-nixvim, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, paris-nixvim, ... }@inputs:
     let
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
         inherit system;
 
-        config = {
-          allowUnfree = true;
-        };
+        config = { allowUnfree = true; };
       };
-    in
-    {
+    in {
       nixosConfigurations = {
         paris-nix0 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs;};
+          specialArgs = { inherit inputs; };
 
           modules = [
             ./nixos/configuration.nix

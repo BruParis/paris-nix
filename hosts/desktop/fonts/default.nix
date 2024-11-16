@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    twemoji-color-font
-  ];
+  environment.systemPackages = with pkgs; [ twemoji-color-font ];
   fonts = {
     packages = with pkgs; [
       noto-fonts

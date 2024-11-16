@@ -1,7 +1,4 @@
-{ config, lib, pkgs, ... }:
-{
-  imports = [
-    ./fonts
-  ];
+{ config, lib, pkgs, ... }: {
+  imports = [ ./fonts ];
 
 }

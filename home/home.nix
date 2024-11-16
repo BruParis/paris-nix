@@ -64,7 +64,7 @@
     google-chrome
 
     # misc
-    pamixer    
+    pamixer
     trash-cli
     zip
     unzip
@@ -80,9 +80,7 @@
   #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
   #  /etc/profiles/per-user/bruno/etc/profile.d/hm-session-vars.sh
 
-  home.sessionVariables = {
-    EDITOR = "vim";
-  };
+  home.sessionVariables = { EDITOR = "vim"; };
 
   programs.git = {
     enable = true;
@@ -110,7 +108,8 @@
   # plain files is through 'home.file'.
   home.file = {
     # Allows home-manager to link files from the nix store right into home directory
-    ".icons/bibata".source = "${pkgs.bibata-cursors}/share/icaons/Bibata-Modern-Classic";
+    ".icons/bibata".source =
+      "${pkgs.bibata-cursors}/share/icaons/Bibata-Modern-Classic";
   };
 
   services.ssh-agent.enable = true;

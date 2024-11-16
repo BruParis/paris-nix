@@ -1,43 +1,44 @@
-{ config, pkgs, lib, ...}: 
+{ config, pkgs, lib, ... }:
 
 {
-  home.packages = lib.optionals config.programs.alacritty.enable [pkgs.nerdfonts];
+  home.packages =
+    lib.optionals config.programs.alacritty.enable [ pkgs.nerdfonts ];
 
   programs.alacritty = {
     enable = true;
 
     settings = {
-        font = {
-          size = 12.0;
-          bold = {
-            family = "LiterationMono Nerd Font";
-            style = "Bold";
-          };
-          bold_italic = {
-            family = "LiterationMono Nerd Font";
-            style = "Bold Italic";
-          };
-          italic = {
-            family = "LiterationMono Nerd Font";
-            style = "Italic";
-          };
-          normal = {
-            family = "LiterationMono Nerd Font";
-            style = "Regular";
-          };
+      font = {
+        size = 12.0;
+        bold = {
+          family = "LiterationMono Nerd Font";
+          style = "Bold";
         };
-        
-        window = {
-          dynamic_padding = false;
-          opacity = 0.95;
+        bold_italic = {
+          family = "LiterationMono Nerd Font";
+          style = "Bold Italic";
         };
-        
-        colors = {
-          primary = {
-            background = "#282C34";
-            foreground = "#ABB2BF";
-          };
+        italic = {
+          family = "LiterationMono Nerd Font";
+          style = "Italic";
         };
+        normal = {
+          family = "LiterationMono Nerd Font";
+          style = "Regular";
+        };
+      };
+
+      window = {
+        dynamic_padding = false;
+        opacity = 0.95;
+      };
+
+      colors = {
+        primary = {
+          background = "#282C34";
+          foreground = "#ABB2BF";
+        };
+      };
     };
   };
 }

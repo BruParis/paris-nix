@@ -20,13 +20,12 @@ let
     # notification daemon
     mako
   '';
-in
-{
+in {
   wayland.windowManager.hyprland = {
     enable = true;
 
     settings = {
-      exec-once = ''${startupScript}/bin/start'';
+      exec-once = "${startupScript}/bin/start";
       input.kb_layout = "fr";
     };
 
@@ -34,4 +33,4 @@ in
 
   home.file.".config/hypr/hyprland.conf".source = ./config/hypr/hyprland.conf;
 }
-  
+
