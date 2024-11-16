@@ -71,6 +71,8 @@
 
     texlive.combined.scheme-full
     zathura
+
+    jdk
   ];
 
   #  Manage environment variables manually by sourcing 'hm-session-vars.sh' at:
