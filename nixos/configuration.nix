@@ -5,7 +5,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../hosts/desktop ];
+  imports = [ ./nvidia.nix ./hardware-configuration.nix ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -114,6 +114,9 @@
 
     inputs.paris-nixvim.packages."x86_64-linux".default
 
+    lshw
+    linuxPackages.nvidiaPackages.stable
+
     # needed by qt
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
@@ -127,7 +130,7 @@
     python310
     python312
     virtualenv
-    nixfmt
+    nixfmt-classic
   ];
 
   programs.hyprland.enable = true;
