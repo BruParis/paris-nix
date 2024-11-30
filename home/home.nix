@@ -69,7 +69,6 @@
     zip
     unzip
 
-    texlive.combined.scheme-full
     zathura
 
     jdk
