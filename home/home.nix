@@ -71,6 +71,8 @@
 
     zathura
 
+    # for dev
+    gnumake
     jdk
   ];
 

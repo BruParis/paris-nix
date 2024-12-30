@@ -36,6 +36,10 @@
           ];
         };
       };
+
+      devShells.${system} = {
+        cuda = pkgs.callPackage ./devshells/cuda-shell.nix { };
+      };
     };
 
 }
