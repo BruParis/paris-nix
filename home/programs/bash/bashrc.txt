@@ -1,61 +1,26 @@
 #!/bin/bash
 
 shopt -s autocd #Allow to cd into directory with just directory name
-
-export PS1="\[$(tput bold)$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 4)\]@\[$(tput setaf 2)\]\h:\[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\[\$(parse_git_branch_color)\]\$(parse_git_branch)\$\[$(tput sgr0)\] "
-
-#check the window size after each command and, if necessary update values of LINES and COLUMNS
-shopt -s checkwinsize
-
-# Colors for the prompt
-no_color="\033[0;0m"
-blue="\033[0;34m"
-white="\033[0;37m"
-red="\033[0;31m"
-green="\033[0;32m"
-yellow="\033[0;33m"
-cyan="\033[0;36m"
-
-# High Intensty
-hblack="\033[0;90m"       # Black
-hred="\033[0;91m"         # Red
-hgreen="\033[0;92m"       # Green
-hyellow="\033[0;93m"      # Yellow
-hblue="\033[0;94m"        # Blue
-hpurple="\033[0;95m"      # Purple
-hcyan="\033[0;96m"        # Cyan
-hwhite="\033[0;97m"       # White
-
-#!/bin/bash
-
-shopt -s autocd #Allow to cd into directory with just directory name
-
-export PS1="\[$(tput bold)$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 4)\]@\[$(tput setaf 2)\]\h:\[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\[\$(parse_git_branch_color)\]\$(parse_git_branch)\$\[$(tput sgr0)\] "
 #check the window size after each command and, if necessary update values of LINES and COLUMNS
 shopt -s checkwinsize
 
 #ssh
 eval $(ssh-agent) > /dev/null
 
-# Colors for the prompt
-no_color="\033[0;0m"
-blue="\033[0;34m"
-white="\033[0;37m"
-red="\033[0;31m"
-green="\033[0;32m"
-yellow="\033[0;33m"
-cyan="\033[0;36m"
+no_color=$(tput sgr0)
+bold=$(tput bold)
+reset=$(tput sgr0)
 
-# High Intensty
-hblack="\033[0;90m"       # Black
-hred="\033[0;91m"         # Red
-hgreen="\033[0;92m"       # Green
-hyellow="\033[0;93m"      # Yellow
-hblue="\033[0;94m"        # Blue
-hpurple="\033[0;95m"      # Purple
-hcyan="\033[0;96m"        # Cyan
-hwhite="\033[0;97m"       # White
+red=$(tput setaf 1)
+yellow=$(tput setaf 3)
+blue=$(tput setaf 4)
+green=$(tput setaf 2)
+magenta=$(tput setaf 5)
+white=$(tput setaf 7)
 
+nix_shell_prompt() {
+ [ -n "$IN_NIX_SHELL" ] && echo -n "(${name}) "
+}
 
 parse_git_branch() {
     gitstatus="$(git status 2> /dev/null)"
@@ -107,6 +72,8 @@ parse_git_branch_color() {
         echo -e "${blue}"  # Default color for other branches
     fi
 }
+
+export PS1="\[$white\]\$(nix_shell_prompt)\[$bold$red\][\[$yellow\]\u\[$blue\]@\[$green\]\h\[$blue\]:\[$magenta\]\w\[$red\]]\[$(parse_git_branch_color)\]\$(parse_git_branch)\[$reset\]\$ "
 
 #Aliases
 #if [ -f ~/.bashrc_aliases ]; then

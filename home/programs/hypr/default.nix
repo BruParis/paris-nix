@@ -82,7 +82,7 @@
           rounding = 1
 
           # Change transparency of focused and unfocused windows
-          active_opacity = 0.95
+          active_opacity = 1.00
           inactive_opacity = 0.92
 
           # drop_shadow = true

@@ -37,9 +37,14 @@
         };
       };
 
-      devShells.${system} = {
-        cuda = pkgs.callPackage ./devshells/cuda-shell.nix { };
+      devShells.${system} = let
+        sharedInputs = import ./devshells/shared-inputs.nix { inherit pkgs; };
+      in {
+        cuda = pkgs.callPackage ./devshells/cuda-shell.nix {
+          inherit sharedInputs;
+        };
       };
+
     };
 
 }

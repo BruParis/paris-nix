@@ -1,7 +1,7 @@
-{ pkgs ? import <nixpkgs> { } }:
-pkgs.mkShell {
-  name = "cuda-env-shell";
-  buildInputs = with pkgs; [
+{ pkgs, sharedInputs }:
+
+let
+  auxInputs = with pkgs; [
     git
     gitRepo
     gnupg
@@ -14,6 +14,7 @@ pkgs.mkShell {
     gperf
     unzip
     cudatoolkit
+    cudaPackages.cuda_cudart
     linuxPackages.nvidia_x11
     libGLU
     libGL
@@ -29,10 +30,15 @@ pkgs.mkShell {
     stdenv.cc
     binutils
   ];
+in pkgs.mkShell {
+  name = "cuda";
+  buildInputs = sharedInputs.sharedPkgs ++ auxInputs;
   shellHook = ''
-    export CUDA_PATH=${pkgs.cudatoolkit}
-    # export LD_LIBRARY_PATH=${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib
-    export EXTRA_LDFLAGS="-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib"
-    export EXTRA_CCFLAGS="-I/usr/include"
+    figlet -f slant "CUDA-ENV"
   '';
+
+  CUDA_PATH = "${pkgs.cudatoolkit}";
+  LD_LIBRARY_PATH = "${pkgs.linuxPackages.nvidia_x11}:$LD_LIBRARY_PATH";
+  EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
+  EXTRA_CCFLAGS = "-I/usr/include";
 }
