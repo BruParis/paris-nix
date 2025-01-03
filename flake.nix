@@ -39,9 +39,13 @@
 
       devShells.${system} = let
         sharedInputs = import ./devshells/shared-inputs.nix { inherit pkgs; };
+        cCppInputs = import ./devshells/c-cpp-inputs.nix { inherit pkgs; };
       in {
         cuda = pkgs.callPackage ./devshells/cuda-shell.nix {
-          inherit sharedInputs;
+          inherit cCppInputs sharedInputs;
+        };
+        cCpp = pkgs.callPackage ./devshells/c-cpp-shell.nix {
+          inherit cCppInputs sharedInputs;
         };
       };
 

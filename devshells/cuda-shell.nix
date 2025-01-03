@@ -1,40 +1,22 @@
-{ pkgs, sharedInputs }:
+{
+  pkgs,
+  cCppInputs,
+  sharedInputs,
+}:
 
 let
   auxInputs = with pkgs; [
-    git
-    gitRepo
-    gnupg
-    autoconf
-    curl
-    procps
-    gnumake
-    util-linux
-    m4
-    gperf
-    unzip
     cudatoolkit
     cudaPackages.cuda_cudart
+    cudaPackages_11.libcufft
     linuxPackages.nvidia_x11
-    libGLU
-    libGL
-    xorg.libXi
-    xorg.libXmu
-    freeglut
-    xorg.libXext
-    xorg.libX11
-    xorg.libXv
-    xorg.libXrandr
-    zlib
-    ncurses5
-    stdenv.cc
-    binutils
   ];
-in pkgs.mkShell {
+in
+pkgs.mkShell {
   name = "cuda";
-  buildInputs = sharedInputs.sharedPkgs ++ auxInputs;
+  buildInputs = cCppInputs.cCppPkgs ++ sharedInputs.sharedPkgs ++ auxInputs;
   shellHook = ''
-    figlet -f slant "CUDA-ENV"
+    figlet -f slant "CUDA ENV"
   '';
 
   CUDA_PATH = "${pkgs.cudatoolkit}";

@@ -53,17 +53,12 @@
     # app launcher
     rofi-wayland
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
     # Browsers
     firefox
     google-chrome
 
     # misc
+    xclip
     pamixer
     trash-cli
     zip
