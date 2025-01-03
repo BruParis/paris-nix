@@ -1,15 +1,15 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.packages =
-    lib.optionals config.programs.alacritty.enable [ pkgs.nerdfonts ];
+  home.packages = lib.optionals config.programs.alacritty.enable
+    [ pkgs.nerd-fonts.liberation ];
 
   programs.alacritty = {
     enable = true;
 
     settings = {
       font = {
-        size = 12.0;
+        size = 11.0;
         bold = {
           family = "LiterationMono Nerd Font";
           style = "Bold";
