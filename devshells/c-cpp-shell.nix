@@ -1,8 +1,8 @@
 
 {
   pkgs,
-  cCppInputs,
-  sharedInputs,
+  cCppUtils,
+  sharedUtils,
 }:
 
 # let
@@ -10,7 +10,7 @@
 # in
 pkgs.mkShell {
   name = "c-cpp";
-  buildInputs = cCppInputs.cCppPkgs ++ sharedInputs.sharedPkgs;
+  buildInputs = cCppUtils.cCppInputs ++ sharedUtils.sharedInputs;
   shellHook = ''
     figlet -f slant "C / C++ ENV"
   '';

@@ -1,7 +1,7 @@
 { pkgs }:
 
 {
-  cCppPkgs = with pkgs; [
+  cCppInputs = with pkgs; [
     autoconf
     gnumake
     m4
@@ -15,7 +15,6 @@
     xorg.libX11
     xorg.libXv
     xorg.libXrandr
-    stdenv.cc
     binutils
   ];
 }

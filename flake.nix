@@ -11,19 +11,32 @@
     paris-nixvim.url = "github:BruParis/paris-nixvim";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, paris-nixvim, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      hyprland,
+      paris-nixvim,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
         inherit system;
 
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       };
-    in {
+    in
+    {
       nixosConfigurations = {
         paris-nix0 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+          };
 
           modules = [
             ./nixos/configuration.nix
@@ -37,15 +50,23 @@
         };
       };
 
+      # devShells.${system}.default = pkgs.mkShell {
+      #   packages = with pkgs; [
+      #     gcc13
+      #   ];
+      #   buildInputs = with pkgs; [
+      #     stdenv.cc
+      #   ];
+      # };
       devShells.${system} = let
-        sharedInputs = import ./devshells/shared-inputs.nix { inherit pkgs; };
-        cCppInputs = import ./devshells/c-cpp-inputs.nix { inherit pkgs; };
+        sharedUtils = import ./devshells/shared-utils.nix { inherit pkgs; };
+        cCppUtils = import ./devshells/c-cpp-utils.nix { inherit pkgs; };
       in {
         cuda = pkgs.callPackage ./devshells/cuda-shell.nix {
-          inherit cCppInputs sharedInputs;
+          inherit cCppUtils sharedUtils;
         };
         cCpp = pkgs.callPackage ./devshells/c-cpp-shell.nix {
-          inherit cCppInputs sharedInputs;
+          inherit cCppUtils sharedUtils;
         };
       };
 

@@ -1,7 +1,7 @@
 { pkgs }:
 
 {
-  sharedPkgs = with pkgs; [
+  sharedInputs = with pkgs; [
     figlet
     git
     gitRepo
@@ -13,8 +13,4 @@
     zlib
     ncurses5
   ];
-
-  sharedEnv = {
-  };
 }
-
