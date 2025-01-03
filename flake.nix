@@ -50,14 +50,6 @@
         };
       };
 
-      # devShells.${system}.default = pkgs.mkShell {
-      #   packages = with pkgs; [
-      #     gcc13
-      #   ];
-      #   buildInputs = with pkgs; [
-      #     stdenv.cc
-      #   ];
-      # };
       devShells.${system} = let
         sharedUtils = import ./devshells/shared-utils.nix { inherit pkgs; };
         cCppUtils = import ./devshells/c-cpp-utils.nix { inherit pkgs; };
