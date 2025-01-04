@@ -60,6 +60,9 @@
         cCpp = pkgs.callPackage ./devshells/c-cpp-shell.nix {
           inherit cCppUtils sharedUtils;
         };
+        python312 = pkgs.callPackage ./devshells/python312-shell.nix {
+          inherit sharedUtils;
+        };
       };
 
     };

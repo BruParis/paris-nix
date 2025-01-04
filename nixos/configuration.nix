@@ -126,9 +126,6 @@
 
     htop
 
-    python310
-    python312
-    virtualenv
     nixfmt-classic
 
     flatpak # virtualized desktop applications
