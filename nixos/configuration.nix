@@ -98,7 +98,7 @@
   };
   users.users.bruno = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "scanner" "lp" ];
+    extraGroups = [ "wheel" "scanner" "lp" "docker"];
     hashedPassword =
       "$6$ZBXl1qCQMq7iYa5h$6np0VTJpl8vpop2kHVptX8wBILURSFwuZPfY3BGzY0Q7y0CzbciVYj7idmeT3ste.c72LtA/5F4c545dP1CfE1";
     packages = with pkgs; [ tree ];
@@ -129,6 +129,7 @@
     nixfmt-classic
 
     flatpak # virtualized desktop applications
+    docker
   ];
 
   programs.hyprland.enable = true;
@@ -154,6 +155,7 @@
   services.openssh.enable = true;
 
   services.flatpak.enable = true;
+  virtualisation.docker.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

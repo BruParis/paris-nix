@@ -16,4 +16,9 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     open = false;
   };
+
+  # if docker container are expected to run with nvidia gpu
+  hardware.nvidia-container-toolkit = {
+    enable = true;
+  };
 }
