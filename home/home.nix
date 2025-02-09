@@ -68,6 +68,7 @@
     trash-cli
     zip
     unzip
+    feh
 
     zathura
 
