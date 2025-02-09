@@ -10,7 +10,7 @@
 # in
 pkgs.mkShell {
   name = "c-cpp";
-  buildInputs = cCppUtils.cCppInputs ++ sharedUtils.sharedInputs;
+  packages = cCppUtils.cCppInputs ++ sharedUtils.sharedInputs;
   shellHook = ''
     figlet -f slant "C / C++ ENV"
   '';

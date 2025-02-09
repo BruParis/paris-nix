@@ -14,7 +14,7 @@ in
 pkgs.mkShell {
   name = "python312";
 
-  buildInputs = sharedUtils.sharedInputs ++ auxInputs;
+  packages = sharedUtils.sharedInputs ++ auxInputs;
   shellHook = ''
     figlet -f slant "Python 3.12"
   '';

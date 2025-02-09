@@ -14,8 +14,10 @@ let
 in
 pkgs.mkShell {
   name = "cuda";
-  packages = with pkgs; [ gcc13 ]; # Later than 13 are not supported by CUDA
-  buildInputs = cCppUtils.cCppInputs ++ sharedUtils.sharedInputs ++ auxInputs;
+  packages = with pkgs; [ 
+    gcc13 # Later than 13 are not supported by CUDA
+
+  ] ++ cCppUtils.cCppInputs ++ sharedUtils.sharedInputs ++ auxInputs;
   shellHook = ''
     figlet -f slant "CUDA ENV"
   '';
