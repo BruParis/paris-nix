@@ -92,13 +92,6 @@
     userEmail = "parisbruno85@gmail.com";
   };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-    style.name = "adwaita-dark";
-    style.package = pkgs.adwaita-qt;
-  };
-
   xdg.mimeApps.defaultApplications = {
     "text/plain" = [ "neovide.desktop" ];
     "application/pdf" = [ "zathura.desktop" ];
