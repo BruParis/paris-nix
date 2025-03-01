@@ -92,6 +92,8 @@
     userEmail = "parisbruno85@gmail.com";
   };
 
+  programs.direnv.enable = true;
+
   xdg.mimeApps.defaultApplications = {
     "text/plain" = [ "neovide.desktop" ];
     "application/pdf" = [ "zathura.desktop" ];
