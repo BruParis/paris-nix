@@ -124,7 +124,7 @@
 
     nixfmt-classic
 
-    flatpak # virtualized desktop applications
+    # flatpak # virtualized desktop applications
     docker
   ];
 
