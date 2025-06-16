@@ -2,10 +2,19 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports = [ ./nvidia.nix ./hardware-configuration.nix ];
+  imports = [
+    ./nvidia.nix
+    ./hardware-configuration.nix
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -16,8 +25,7 @@
   networking.hostName = "paris-nix"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable =
-    true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -83,7 +91,10 @@
 
   hardware.sane = {
     enable = true;
-    extraBackends = [ pkgs.hplip pkgs.hplipWithPlugin ];
+    extraBackends = [
+      pkgs.hplip
+      pkgs.hplipWithPlugin
+    ];
   };
 
   # Open ports in the firewall.
@@ -93,14 +104,17 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.root = {
-    hashedPassword =
-      "$6$f7/tk7gvCV.7j7P9$NclQwH5VffccfUbJq/Vouo1AdO1GroozzwK5rhAzgG6fP61t8EY.SWqq6xVT/dF7zLKzPP.3CK7Lftq8snar7/";
+    hashedPassword = "$6$f7/tk7gvCV.7j7P9$NclQwH5VffccfUbJq/Vouo1AdO1GroozzwK5rhAzgG6fP61t8EY.SWqq6xVT/dF7zLKzPP.3CK7Lftq8snar7/";
   };
   users.users.bruno = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "scanner" "lp" "docker"];
-    hashedPassword =
-      "$6$ZBXl1qCQMq7iYa5h$6np0VTJpl8vpop2kHVptX8wBILURSFwuZPfY3BGzY0Q7y0CzbciVYj7idmeT3ste.c72LtA/5F4c545dP1CfE1";
+    extraGroups = [
+      "wheel"
+      "scanner"
+      "lp"
+      "docker"
+    ];
+    hashedPassword = "$6$ZBXl1qCQMq7iYa5h$6np0VTJpl8vpop2kHVptX8wBILURSFwuZPfY3BGzY0Q7y0CzbciVYj7idmeT3ste.c72LtA/5F4c545dP1CfE1";
     packages = with pkgs; [ tree ];
   };
 
@@ -129,8 +143,7 @@
   ];
 
   programs.hyprland.enable = true;
-  programs.hyprland.package =
-    inputs.hyprland.packages."${pkgs.system}".hyprland;
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # Desktop portals: handles desktop programs interactions, screen-sharing, file opening
   xdg.portal.enable = true;
@@ -183,4 +196,3 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
-
