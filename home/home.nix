@@ -71,6 +71,7 @@
     zip
     unzip
     feh
+    slurp
 
     zathura
 
@@ -93,37 +94,6 @@
     enable = true;
     userName = "BrnPrs";
     userEmail = "parisbruno85@gmail.com";
-  };
-
-  # Shell
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    shellAliases = {
-      ll = "exa -l --group-directories-first";
-      la = "exa -la --group-directories-first";
-      l = "exa --group-directories-first";
-      tree = "tree -C";
-      grep = "rg";
-    };
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-    ];
-    initExtra = ''
-      source ~/.p10k.zsh
-    '';
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-      custom = "$HOME/.oh-my-zsh/custom/";
-      theme = "powerlevel10k/powerlevel10k";
-    };
   };
 
   programs.direnv.enable = true;
