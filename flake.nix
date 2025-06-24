@@ -4,10 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     paris-nixvim.url = "github:BruParis/paris-nixvim";
   };
 
@@ -16,7 +15,6 @@
       self,
       nixpkgs,
       home-manager,
-      # hyprland,
       paris-nixvim,
       ...
     }@inputs:

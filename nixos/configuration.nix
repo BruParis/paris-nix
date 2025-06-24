@@ -143,7 +143,6 @@
   ];
 
   programs.hyprland.enable = true;
-  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # Desktop portals: handles desktop programs interactions, screen-sharing, file opening
   xdg.portal.enable = true;
