@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     paris-nixvim.url = "github:BruParis/paris-nixvim";
   };
 
@@ -16,7 +16,7 @@
       self,
       nixpkgs,
       home-manager,
-      hyprland,
+      # hyprland,
       paris-nixvim,
       ...
     }@inputs:
