@@ -1,8 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  home.packages = lib.optionals config.programs.alacritty.enable
-    [ pkgs.nerd-fonts.liberation ];
+  home.packages = lib.optionals config.programs.alacritty.enable [
+    pkgs.nerd-fonts.liberation
+    pkgs.alacritty-theme
+  ];
 
   programs.alacritty = {
     enable = true;
@@ -33,11 +40,8 @@
         opacity = 0.95;
       };
 
-      colors = {
-        primary = {
-          background = "#282C34";
-          foreground = "#ABB2BF";
-        };
+      general = {
+        import = [ "${pkgs.alacritty-theme}/share/alacritty-theme/catppuccin_macchiato.toml" ];
       };
     };
   };
