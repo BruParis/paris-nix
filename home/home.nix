@@ -78,6 +78,8 @@
     # for dev
     gnumake
     jdk
+
+    electrum
   ];
 
   #  Manage environment variables manually by sourcing 'hm-session-vars.sh' at:
