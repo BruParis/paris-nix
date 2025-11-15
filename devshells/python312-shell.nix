@@ -9,6 +9,7 @@ let
     python312Packages.virtualenv
     python312Packages.black
     python312Packages.flake8
+    python312Packages.numpy
   ];
 in
 pkgs.mkShell {
