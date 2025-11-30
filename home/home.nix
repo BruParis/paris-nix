@@ -53,6 +53,12 @@
     kitty # hyprland default
     alacritty
 
+    tmux
+
+    # sound
+    alsa-utils
+    pavucontrol
+
     zsh
     oh-my-zsh
     zsh-powerlevel10k

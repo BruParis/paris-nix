@@ -1,1 +1,1 @@
-{ imports = [ ./hypr ./waybar ./alacritty ./zsh ]; }
+{ imports = [ ./hypr ./waybar ./alacritty ./zsh ./tmux ]; }
