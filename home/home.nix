@@ -134,5 +134,36 @@
       fi
     '';
   };
+#   Host bparis-crouser
+#     HostName 137.194.54.39
+#     User bparis
+#     IdentityFile /home/bruno/.ssh/bparis_pro
+# Host jean-zay
+#     HostName jean-zay.idris.fr
+#     User udj59kh
+#     ProxyJump bparis-crouser
+#     ForwardAgent Yes
+
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      github = {
+        hostname = "github.com";
+        identityFile = "~/.ssh/paris_nix";
+      };
+      bparis-crouser = {
+        user = "bparis";
+        hostname = "137.194.54.39";
+        identityFile = "~/.ssh/bparis_pro";
+      };
+      jean-zay = {
+        hostname = "jean-zay.idris.fr";
+        user = "udj59kh";
+        proxyJump = "bparis-crouser";
+        forwardAgent = true;
+      };
+    };
+  };
 
 }
