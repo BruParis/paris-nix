@@ -124,6 +124,7 @@
     vim
     wget
     git
+    gnupg
 
     inputs.paris-nixvim.packages."x86_64-linux".default
 
@@ -150,10 +151,10 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
   services.dbus.enable = true;
