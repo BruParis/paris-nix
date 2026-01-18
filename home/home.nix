@@ -86,6 +86,8 @@
     jdk
 
     electrum
+
+    claude-code
   ];
 
   #  Manage environment variables manually by sourcing 'hm-session-vars.sh' at:
