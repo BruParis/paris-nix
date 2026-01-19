@@ -2,13 +2,14 @@
   description = "A very basic flake";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     paris-nixvim.url = "github:BruParis/paris-nixvim";
+    claude-code.url = "github:sadjow/claude-code-nix";
   };
 
   outputs =
@@ -17,6 +18,7 @@
       nixpkgs,
       home-manager,
       paris-nixvim,
+      claude-code,
       ...
     }@inputs:
     let

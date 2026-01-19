@@ -136,7 +136,7 @@
 
     htop
 
-    nixfmt-classic
+    nixfmt
 
     # flatpak # virtualized desktop applications
     docker

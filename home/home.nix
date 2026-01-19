@@ -64,7 +64,8 @@
     zsh-powerlevel10k
 
     # app launcher
-    rofi-wayland
+    rofi
+    # rofi-wayland
 
     # Browsers
     firefox
@@ -102,8 +103,10 @@
 
   programs.git = {
     enable = true;
-    userName = "BrnPrs";
-    userEmail = "parisbruno85@gmail.com";
+    settings.user = {
+      name = "BrnPrs";
+      email = "parisbruno85@gmail.com";
+    };
   };
 
   programs.direnv.enable = true;
@@ -149,6 +152,7 @@
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     matchBlocks = {
       github = {
         hostname = "github.com";
