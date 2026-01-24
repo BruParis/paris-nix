@@ -109,7 +109,11 @@
     };
   };
 
-  programs.direnv.enable = true;
+  # programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   xdg.mimeApps.defaultApplications = {
     "text/plain" = [ "neovide.desktop" ];
