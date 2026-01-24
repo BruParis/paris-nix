@@ -16,7 +16,7 @@
 
     settings = {
       font = {
-        size = 11.0;
+        size = 9.0;
         bold = {
           family = "LiterationMono Nerd Font";
           style = "Bold";
