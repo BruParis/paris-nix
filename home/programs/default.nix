@@ -1,1 +1,11 @@
-{ imports = [ ./hypr ./waybar ./alacritty ./zsh ./tmux ]; }
+{ lib, withHyprland ? true, ... }:
+{
+  imports = [
+    ./alacritty
+    ./zsh
+    ./tmux
+  ] ++ lib.optionals withHyprland [
+    ./hypr
+    ./waybar
+  ];
+}

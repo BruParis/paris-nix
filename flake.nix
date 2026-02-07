@@ -45,9 +45,35 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                withHyprland = true;
+                isNixOS = true;
+              };
               home-manager.users.bruno = import ./home/home.nix;
             }
           ];
+        };
+      };
+
+      homeConfigurations = {
+        "bruno-nixos" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home/home.nix ];
+          extraSpecialArgs = {
+            inherit inputs;
+            withHyprland = true;
+            isNixOS = true;
+          };
+        };
+        "bruno-fedora" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home/home.nix ];
+          extraSpecialArgs = {
+            inherit inputs;
+            withHyprland = false;
+            isNixOS = false;
+          };
         };
       };
 

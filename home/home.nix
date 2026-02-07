@@ -1,15 +1,26 @@
 {
   config,
   pkgs,
-  users,
+  lib,
+  withHyprland ? true,
+  isNixOS ? true,
+  inputs,
   ...
 }:
 
+let
+  claude-code = inputs.claude-code.packages.${pkgs.system}.default;
+in
 {
   imports = [
-    # hyprland.homeManagerModules.default
     ./programs
   ];
+
+  # Pass withHyprland to submodules
+  _module.args = { inherit withHyprland; };
+
+  # Enable genericLinux target for non-NixOS systems (e.g., Fedora)
+  targets.genericLinux.enable = !isNixOS;
 
   home.username = "bruno";
   home.homeDirectory = "/home/bruno";
@@ -26,33 +37,15 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # targets.genericLinux.enable = true; # ENABLE THIS ON NON NIXOS
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-
     hello
     dconf # needed by gtk
     networkmanagerapplet
 
-    wev # for key bindings
-
-    # wayland notification daemon
-    mako
-    # ... which depends on
-    libnotify
-
-    wl-clipboard
-    cliphist
-
-    # wall paper daemon
-    # hyprpaper
-    swww
-
-    kitty # hyprland default
+    kitty
     alacritty
-
     tmux
 
     # sound
@@ -65,7 +58,6 @@
 
     # app launcher
     rofi
-    # rofi-wayland
 
     # Browsers
     firefox
@@ -78,7 +70,6 @@
     zip
     unzip
     feh
-    slurp
 
     zathura
 
@@ -89,6 +80,15 @@
     electrum
 
     claude-code
+  ] ++ lib.optionals withHyprland [
+    # Wayland/Hyprland specific packages
+    wev # for key bindings
+    mako # wayland notification daemon
+    libnotify
+    wl-clipboard
+    cliphist
+    swww # wallpaper daemon
+    slurp # screen region selector
   ];
 
   #  Manage environment variables manually by sourcing 'hm-session-vars.sh' at:
@@ -137,7 +137,7 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    bashrcExtra = ''
+    bashrcExtra = lib.optionalString (withHyprland && isNixOS) ''
       if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
         Hyprland
       fi
