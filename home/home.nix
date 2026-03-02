@@ -160,12 +160,12 @@ in
     matchBlocks = {
       github = {
         hostname = "github.com";
-        identityFile = "~/.ssh/paris_nix";
+        identityFile = "~/.secrets/bru_perso2";
       };
       bparis-crouser = {
         user = "bparis";
         hostname = "137.194.54.39";
-        identityFile = "~/.ssh/bparis_pro";
+        identityFile = "~/.secrets/bparis_pro";
       };
       jean-zay = {
         hostname = "jean-zay.idris.fr";
