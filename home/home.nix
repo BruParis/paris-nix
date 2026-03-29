@@ -9,7 +9,7 @@
 }:
 
 let
-  claude-code = inputs.claude-code.packages.${pkgs.system}.default;
+  claude-code = inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   imports = [
@@ -104,6 +104,7 @@ in
 
   programs.git = {
     enable = true;
+    signing.format = null;
     settings.user = {
       name = "BrnPrs";
       email = "parisbruno85@gmail.com";
