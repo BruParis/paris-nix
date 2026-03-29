@@ -43,6 +43,11 @@
       general = {
         import = [ "${pkgs.alacritty-theme}/share/alacritty-theme/catppuccin_macchiato.toml" ];
       };
+
+      terminal.shell = {
+        program = "${pkgs.zsh}/bin/zsh";
+        args = [ "-l" ];
+      };
     };
   };
 }

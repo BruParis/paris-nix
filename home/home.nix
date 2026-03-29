@@ -136,15 +136,7 @@ in
 
   services.ssh-agent.enable = true;
 
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    bashrcExtra = lib.optionalString (withHyprland && isNixOS) ''
-      if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-        Hyprland
-      fi
-    '';
-  };
+
 #   Host bparis-crouser
 #     HostName 137.194.54.39
 #     User bparis

@@ -41,9 +41,6 @@
       }
     ];
     autocd = true;
-    # initExtra = ''
-    #   [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && Hyprland
-    # '';
     oh-my-zsh = {
       enable = true;
       plugins = [

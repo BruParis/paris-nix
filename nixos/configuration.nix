@@ -106,8 +106,11 @@
   users.users.root = {
     hashedPassword = "$6$f7/tk7gvCV.7j7P9$NclQwH5VffccfUbJq/Vouo1AdO1GroozzwK5rhAzgG6fP61t8EY.SWqq6xVT/dF7zLKzPP.3CK7Lftq8snar7/";
   };
+  programs.zsh.enable = true; # needed to add zsh to /etc/shells
+
   users.users.bruno = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     extraGroups = [
       "wheel"
       "scanner"
@@ -142,7 +145,29 @@
     docker
   ];
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
+
+  systemd.services.greetd = {
+    unitConfig = {
+      After = lib.mkOverride 0 [ "multi-user.target" ];
+    };
+    serviceConfig = {
+      Type = "idle";
+    };
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
+        user = "greeter";
+      };
+    };
+  };
 
   # Desktop portals: handles desktop programs interactions, screen-sharing, file opening
   xdg.portal.enable = true;
