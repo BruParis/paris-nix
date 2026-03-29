@@ -132,6 +132,7 @@ in
     # Allows home-manager to link files from the nix store right into home directory
     ".icons/bibata".source = "${pkgs.bibata-cursors}/share/icaons/Bibata-Modern-Classic";
     ".scripts".source = ./scripts;
+    "Pictures/Screenshots/.keep".text = "";
   };
 
   services.ssh-agent.enable = true;
