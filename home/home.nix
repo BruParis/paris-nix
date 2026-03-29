@@ -89,6 +89,7 @@ in
     cliphist
     swww # wallpaper daemon
     slurp # screen region selector
+    grim # screenshot tool
   ];
 
   #  Manage environment variables manually by sourcing 'hm-session-vars.sh' at:
