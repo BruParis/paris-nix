@@ -19,6 +19,45 @@
         "type": "github"
       }
     },
+    "doomemacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775183900,
+        "narHash": "sha256-2TK9bCb6nSj+iCMI3wGva3n9Egbn76AOnu+Dwrmb2wM=",
+        "owner": "doomemacs",
+        "repo": "doomemacs",
+        "rev": "297b8d5788fdf6a1bae68d75937b01ba01f958f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "doomemacs",
+        "repo": "doomemacs",
+        "type": "github"
+      }
+    },
+    "emacs-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nix-doom-emacs-unstraightened"
+        ],
+        "nixpkgs-stable": [
+          "nix-doom-emacs-unstraightened"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775206533,
+        "narHash": "sha256-rIsZJemVvgdUAfq6/+qIut7BYJe0Hkm6Lsi7yCG/16s=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "1352ba406242e7e8beb93ec8b99787bb8edbed04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -73,7 +112,7 @@
     },
     "flake-utils_2": {
       "inputs": {
-        "systems": "systems_2"
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -194,6 +233,27 @@
         "type": "github"
       }
     },
+    "nix-doom-emacs-unstraightened": {
+      "inputs": {
+        "doomemacs": "doomemacs",
+        "emacs-overlay": "emacs-overlay",
+        "nixpkgs": [],
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1775298566,
+        "narHash": "sha256-t6qlVfs/qqrYiu6x+/29tgDXfp0p3Ex3kdUJgPgaFi8=",
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "rev": "1f3053c433c0d1396146efcecb8e3ae0dcbeb058",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1774610258,
@@ -310,6 +370,7 @@
       "inputs": {
         "claude-code": "claude-code",
         "home-manager": "home-manager",
+        "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nixpkgs": "nixpkgs_2",
         "paris-nixvim": "paris-nixvim"
       }
@@ -330,6 +391,21 @@
       }
     },
     "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

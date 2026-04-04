@@ -126,13 +126,19 @@ in
     "video/*" = [ "mpv.desktop" ];
   };
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
     # Allows home-manager to link files from the nix store right into home directory
     ".icons/bibata".source = "${pkgs.bibata-cursors}/share/icaons/Bibata-Modern-Classic";
     ".scripts".source = ./scripts;
     "Pictures/Screenshots/.keep".text = "";
+
+    # nix-doom-emacs-unstraightened bypasses straight.el entirely, so the
+    # straight/build-* directory that Doom's doctor expects never gets created.
+    # This dummy file forces home-manager to create the directory on every
+    # activation, silencing the "File is missing" error from `doom doctor`.
+    # At each Emacs version changes (e.g. build-30.3),
+    # update the path below to match.
+    ".local/share/nix-doom/straight/build-30.2/.keep".text = "";
   };
 
   services.ssh-agent.enable = true;

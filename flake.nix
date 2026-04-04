@@ -10,6 +10,8 @@
     };
     paris-nixvim.url = "github:BruParis/paris-nixvim";
     claude-code.url = "github:sadjow/claude-code-nix";
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
+    nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
   };
 
   outputs =
@@ -50,6 +52,9 @@
                 withHyprland = true;
                 isNixOS = true;
               };
+              home-manager.sharedModules = [
+                inputs.nix-doom-emacs-unstraightened.homeModule
+              ];
               home-manager.users.bruno = import ./home/home.nix;
             }
           ];
@@ -59,7 +64,10 @@
       homeConfigurations = {
         "bruno-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home/home.nix ];
+          modules = [
+            inputs.nix-doom-emacs-unstraightened.homeModule
+            ./home/home.nix
+          ];
           extraSpecialArgs = {
             inherit inputs;
             withHyprland = true;
@@ -68,7 +76,10 @@
         };
         "bruno-fedora" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home/home.nix ];
+          modules = [
+            inputs.nix-doom-emacs-unstraightened.homeModule
+            ./home/home.nix
+          ];
           extraSpecialArgs = {
             inherit inputs;
             withHyprland = false;
