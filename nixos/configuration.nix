@@ -128,6 +128,7 @@
     wget
     git
     gnupg
+    home-manager
 
     inputs.paris-nixvim.packages."x86_64-linux".default
 
