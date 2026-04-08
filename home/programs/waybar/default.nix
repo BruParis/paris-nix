@@ -70,7 +70,7 @@
                padding-right: 6px;
                color: #7ebae4;
              }
-       #mode, #clock, #memory, #cpu, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu  {
+       #mode, #clock, #memory, #cpu, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-theme  {
                padding-left: 10px;
                padding-right: 10px;
              }
@@ -104,6 +104,12 @@
        #network.disconnected {
                color: rgb(255, 255, 255);
              }
+       #custom-theme {
+               color: rgb(221, 182, 242);
+               padding-left: 10px;
+               padding-right: 10px;
+               font-size: 14px;
+             }
        #custom-powermenu {
                color: rgb(242, 143, 173);
                padding-right: 8px;
@@ -120,6 +126,7 @@
       modules-center = [ "clock" ];
       modules-right = [
         "tray"
+        "custom/theme"
         "pulseaudio"
         "battery"
         "memory"
@@ -179,6 +186,13 @@
         "format" = "";
         "on-click" =
           "pkill rofi || ~/.config/rofi/powermenu/type-3/powermenu.sh";
+        "tooltip" = false;
+      };
+      "custom/theme" = {
+        "exec" = "~/.scripts/toggle-theme.sh status";
+        "on-click" = "~/.scripts/toggle-theme.sh";
+        "interval" = "once";
+        "signal" = 8;
         "tooltip" = false;
       };
       "tray" = {

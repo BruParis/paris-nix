@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "catppuccin-kitty": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768528501,
+        "narHash": "sha256-akRkdq8l2opGIg3HZd+Y4eky6WaHgKFQ5+iJMC1bhnQ=",
+        "owner": "catppuccin",
+        "repo": "kitty",
+        "rev": "43098316202b84d6a71f71aaf8360f102f4d3f1a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "kitty",
+        "type": "github"
+      }
+    },
     "claude-code": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -368,6 +384,7 @@
     },
     "root": {
       "inputs": {
+        "catppuccin-kitty": "catppuccin-kitty",
         "claude-code": "claude-code",
         "home-manager": "home-manager",
         "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",

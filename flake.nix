@@ -12,6 +12,10 @@
     claude-code.url = "github:sadjow/claude-code-nix";
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
+    catppuccin-kitty = {
+      url = "github:catppuccin/kitty";
+      flake = false;
+    };
   };
 
   outputs =
