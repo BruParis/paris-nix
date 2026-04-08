@@ -369,11 +369,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1774622700,
-        "narHash": "sha256-S1b3m2Bv9O4Efby9J+sPtZIOvlYcwxS4bMfTW5hmlYo=",
+        "lastModified": 1775679716,
+        "narHash": "sha256-jJm+y6G/zDRLDvlzxneI8gbtrQB4msv1k5IkF/UAf4w=",
         "owner": "BruParis",
         "repo": "paris-nixvim",
-        "rev": "2855e56121ed33e7998e40b5d5eeb4c163e415af",
+        "rev": "278a7d3fcb6a1ec5c7d88671d217eb524e46e6b0",
         "type": "github"
       },
       "original": {
