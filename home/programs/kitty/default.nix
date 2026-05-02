@@ -32,6 +32,7 @@ in
   home.activation.kittyDefaultTheme = lib.hm.dag.entryAfter ["writeBoundary"] ''
     theme_file="${config.xdg.configHome}/kitty/current-theme.conf"
     if [ ! -f "$theme_file" ]; then
+      $DRY_RUN_CMD mkdir -p "$(dirname "$theme_file")"
       $DRY_RUN_CMD install -m 644 "${darkThemeFile}" "$theme_file"
     fi
   '';

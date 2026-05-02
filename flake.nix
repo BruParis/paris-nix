@@ -54,6 +54,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 withHyprland = true;
+                withDoomEmacs = true;
                 isNixOS = true;
               };
               home-manager.sharedModules = [
@@ -75,19 +76,21 @@
           extraSpecialArgs = {
             inherit inputs;
             withHyprland = true;
+            withDoomEmacs = true;
             isNixOS = true;
           };
         };
         "bruno-fedora" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            inputs.nix-doom-emacs-unstraightened.homeModule
             ./home/home.nix
           ];
           extraSpecialArgs = {
             inherit inputs;
             withHyprland = false;
+            withDoomEmacs = false;
             isNixOS = false;
+            homeUsername = "brnprs";
           };
         };
       };

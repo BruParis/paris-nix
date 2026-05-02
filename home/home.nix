@@ -3,13 +3,16 @@
   pkgs,
   lib,
   withHyprland ? true,
+  withDoomEmacs ? true,
   isNixOS ? true,
+  homeUsername ? "bruno",
   inputs,
   ...
 }:
 
 let
   claude-code = inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  nvim = inputs.paris-nixvim.packages.${pkgs.stdenv.hostPlatform.system}.nvim;
 in
 {
   imports = [
@@ -17,13 +20,13 @@ in
   ];
 
   # Pass withHyprland to submodules
-  _module.args = { inherit withHyprland; };
+  _module.args = { inherit withHyprland withDoomEmacs isNixOS; };
 
   # Enable genericLinux target for non-NixOS systems (e.g., Fedora)
   targets.genericLinux.enable = !isNixOS;
 
-  home.username = "bruno";
-  home.homeDirectory = "/home/bruno";
+  home.username = homeUsername;
+  home.homeDirectory = "/home/${homeUsername}";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -80,6 +83,7 @@ in
     electrum
 
     claude-code
+    nvim
   ] ++ lib.optionals withHyprland [
     # Wayland/Hyprland specific packages
     wev # for key bindings
