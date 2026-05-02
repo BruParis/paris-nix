@@ -6,6 +6,11 @@
   withDoomEmacs ? true,
   isNixOS ? true,
   homeUsername ? "bruno",
+  # On non-NixOS hosts (e.g. Fedora) Nix can't find the system OpenGL drivers.
+  # The caller injects a wrapGL function (via flake.nix extraSpecialArgs) that
+  # prepends nixGL to the launch command so the host EGL/Mesa is found at runtime.
+  # Defaults to identity so NixOS and generic Linux configs share this file.
+  wrapGL ? (bin: pkg: pkg),
   inputs,
   ...
 }:
@@ -20,7 +25,7 @@ in
   ];
 
   # Pass withHyprland to submodules
-  _module.args = { inherit withHyprland withDoomEmacs isNixOS; };
+  _module.args = { inherit withHyprland withDoomEmacs isNixOS wrapGL; };
 
   # Enable genericLinux target for non-NixOS systems (e.g., Fedora)
   targets.genericLinux.enable = !isNixOS;
@@ -47,8 +52,6 @@ in
     dconf # needed by gtk
     networkmanagerapplet
 
-    kitty
-    alacritty
     tmux
 
     # sound
@@ -105,6 +108,11 @@ in
     EDITOR = "vim";
     SHELL = "${pkgs.zsh}/bin/zsh";
   };
+
+  # Override the package that home-manager installs so only one binary lands in
+  # the profile. On NixOS wrapGL is the identity, so this is a no-op there.
+  programs.kitty.package = wrapGL "kitty" pkgs.kitty;
+  programs.alacritty.package = wrapGL "alacritty" pkgs.alacritty;
 
   programs.git = {
     enable = true;
