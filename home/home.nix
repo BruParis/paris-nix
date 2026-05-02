@@ -86,6 +86,10 @@ in
     electrum
 
     claude-code
+    # nvim bundles a Python 3.12 env (for LSP plugins) which lands a python3
+    # binary in ~/.nix-profile/bin, shadowing Fedora's system Python.
+    # Keep it NixOS-only; on Fedora use the system nvim or a nix shell instead.
+  ] ++ lib.optionals isNixOS [
     nvim
   ] ++ lib.optionals withHyprland [
     # Wayland/Hyprland specific packages
