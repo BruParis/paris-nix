@@ -16,7 +16,6 @@
       url = "github:catppuccin/kitty";
       flake = false;
     };
-    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs =
@@ -92,14 +91,6 @@
             withDoomEmacs = false;
             isNixOS = false;
             homeUsername = "brnprs";
-            # Intel UHD 630 drives the display on this Optimus laptop (MX150 is
-            # compute-only). nixGLIntel injects Mesa at launch so nix-built
-            # GPU-accelerated apps find the host EGL drivers.
-            wrapGL = bin: pkg:
-              let nixGL = inputs.nixgl.packages.${system}.nixGLIntel;
-              in pkgs.writeShellScriptBin bin ''
-                exec ${nixGL}/bin/nixGLIntel ${pkg}/bin/${bin} "$@"
-              '';
           };
         };
       };

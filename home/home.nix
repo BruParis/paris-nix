@@ -6,11 +6,6 @@
   withDoomEmacs ? true,
   isNixOS ? true,
   homeUsername ? "bruno",
-  # On non-NixOS hosts (e.g. Fedora) Nix can't find the system OpenGL drivers.
-  # The caller injects a wrapGL function (via flake.nix extraSpecialArgs) that
-  # prepends nixGL to the launch command so the host EGL/Mesa is found at runtime.
-  # Defaults to identity so NixOS and generic Linux configs share this file.
-  wrapGL ? (bin: pkg: pkg),
   inputs,
   ...
 }:
@@ -25,7 +20,7 @@ in
   ];
 
   # Pass withHyprland to submodules
-  _module.args = { inherit withHyprland withDoomEmacs isNixOS wrapGL; };
+  _module.args = { inherit withHyprland withDoomEmacs isNixOS; };
 
   # Enable genericLinux target for non-NixOS systems (e.g., Fedora)
   targets.genericLinux.enable = !isNixOS;
@@ -67,7 +62,6 @@ in
 
     # Browsers
     firefox
-    google-chrome
 
     # misc
     xclip
@@ -91,6 +85,9 @@ in
     # Keep it NixOS-only; on Fedora use the system nvim or a nix shell instead.
   ] ++ lib.optionals isNixOS [
     nvim
+    # On Fedora, use the system Chrome (dnf) — it finds the host GPU drivers
+    # without any wrapping and works out of the box.
+    google-chrome
   ] ++ lib.optionals withHyprland [
     # Wayland/Hyprland specific packages
     wev # for key bindings
@@ -113,10 +110,11 @@ in
     SHELL = "${pkgs.zsh}/bin/zsh";
   };
 
-  # Override the package that home-manager installs so only one binary lands in
-  # the profile. On NixOS wrapGL is the identity, so this is a no-op there.
-  programs.kitty.package = wrapGL "kitty" pkgs.kitty;
-  programs.alacritty.package = wrapGL "alacritty" pkgs.alacritty;
+  # On NixOS: install the package from nixpkgs.
+  # On Fedora: set package = null so home-manager manages only the config files
+  # while the system (dnf) binary is used — it finds the host GPU drivers natively.
+  programs.kitty.package = if isNixOS then pkgs.kitty else null;
+  programs.alacritty.package = if isNixOS then pkgs.alacritty else null;
 
   programs.git = {
     enable = true;
