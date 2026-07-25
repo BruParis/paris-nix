@@ -9,7 +9,7 @@ in {
     # so nix-env and other nix tools are missing from PATH.
     bashrcExtra = customBashrc + lib.optionalString (!isNixOS) ''
       . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-      export PATH="$HOME/.cargo/bin:$PATH"
+      export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
     '';
   };
 }
