@@ -72,3 +72,7 @@ home-manager switch --flake .#bruno             # Home only
 - `home/programs/waybar/style.css`: Catppuccin-themed status bar
 - `home/programs/zsh/p10k-config/`: Powerlevel10k theme
 - `nixos/nvidia.nix`: GPU setup with container toolkit support
+
+## Misc.
+
+No git command.

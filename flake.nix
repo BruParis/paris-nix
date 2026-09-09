@@ -87,7 +87,7 @@
           ];
           extraSpecialArgs = {
             inherit inputs;
-            withHyprland = false;
+            withHyprland = true;
             withDoomEmacs = false;
             isNixOS = false;
             homeUsername = "brnprs";
