@@ -10,6 +10,10 @@
   programs.tmux = {
     enable = true;
     extraConfig = ''
+      unbind C-b
+      set -g prefix C-w
+      bind-key C-w send-prefix
+
       set -g mouse on
       setw -g mode-keys vi
       bind-key -T copy-mode-vi 'v' send -X begin-selection
