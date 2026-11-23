@@ -9,24 +9,25 @@
 
   programs.tmux = {
     enable = true;
-    extraConfig = ''
-      unbind C-b
-      set -g prefix C-w
-      bind-key C-w send-prefix
+    mouse = true;
+    keyMode = "vi";
+    escapeTime = 10; # default 500ms delays Esc and breaks Alt (<M-...>) keys in nvim
+    focusEvents = true; # lets nvim know when it gains/loses focus
+    terminal = "tmux-256color";
 
-      set -g mouse on
-      setw -g mode-keys vi
+    extraConfig = ''
+
+      # Enable true color (24-bit) for the outer terminal
+      set -as terminal-features ",xterm*:RGB"
+
       bind-key -T copy-mode-vi 'v' send -X begin-selection
       bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
-      set -g default-terminal "xterm-256color"
-      set -ga terminal-overrides ",xterm-256color:Tc"
 
       # Custom keybindings for panel navigation
       bind-key -r -T prefix h select-pane -L
       bind-key -r -T prefix j select-pane -D
       bind-key -r -T prefix k select-pane -U
       bind-key -r -T prefix l select-pane -R
-
     '';
   };
 }
