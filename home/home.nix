@@ -142,7 +142,7 @@ in
 
   home.file = {
     # Allows home-manager to link files from the nix store right into home directory
-    ".icons/bibata".source = "${pkgs.bibata-cursors}/share/icaons/Bibata-Modern-Classic";
+    ".icons/bibata".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
     ".scripts".source = ./scripts;
     "Pictures/Screenshots/.keep".text = "";
 
